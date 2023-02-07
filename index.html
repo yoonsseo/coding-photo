@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>코딩네컷</title>
+    <style>
+      /* 이서윤체 폰트 적용을 위한 코드 */
+      @font-face {
+        font-family: "LeeSeoyun";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      /* body태그 자체에 css 요소 부여 */
+      body {
+        font-family: "LeeSeoyun";
+        margin: 0;
+        /*해당 영역 바깥으로 영역을 남길 것이냐*/
+
+        display: flex;
+        justify-content: center;
+        /*유연하게 display할건데 가운데 정렬*/
+        background-image: url("./background.png");
+      }
+
+      .container {
+        width: 340px;
+        background-color: #ff9d73;
+        height: 100%; /*부모(body) 높이 전체*/
+      }
+      .photos {
+        margin-top: 30px;
+      }
+      .photo-frame {
+        background-color: white;
+        margin: 15px 20px; /*세로 가로*/
+        height: 200px;
+
+        background-size: cover;
+        /*이미지의 가로 세로 비율은 유지
+        배경을 모두 사용할 수 있도록 확대/축소
+        지정한 요소 안에 이미지가 다 들어오도록*/
+
+        position: relative;
+        /*photo-frame 밑에 있는 photo-desc이
+        photo-frame 기준으로 어디에 위치하게 할 것인지*/
+      }
+
+      /* 하단 영역 스타일링 */
+      .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .f-title {
+        font-size: 25px;
+        font-weight: 900;
+        color: white;
+      }
+      .f-date {
+        font-size: 15px;
+        font-weight: 500;
+        color: white;
+      }
+
+      #image1 {
+        background-image: url("./img1.png");
+      }
+      #image2 {
+        background-image: url("./img2.png");
+      }
+      #image3 {
+        background-image: url("./img3.png");
+      }
+      #image4 {
+        background-image: url("./img4.png");
+      }
+
+      .photo-description {
+        color: white;
+        background-color: black;
+        width: fit-content;
+        /*글자 개수에 맞는 너비를 가져라*/
+        padding: 0 20px;
+        /*위아래는 그대로, 좌우로 20px의 여유 공간*/
+        margin-bottom: 10px;
+        /*밑에서 10px 띄워주겠음*/
+        border-radius: 10px;
+        /*테두리 둥글게*/
+
+        position: absolute;
+        bottom: 0;
+        /*photo-frame 기준으로 밑에서 0만큼 올라와
+        근데 위로 살짝 떠 있는데?
+        위에서 margin-bottom으로 10px 정도 뛰워놓음*/
+        transform: translate(-50%);
+        left: 50%;
+        /*왼쪽에서 50%만큼 정확히 가운데 정렬*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="photos">
+        <div id="image1" class="photo-frame">
+          <span id="desc1" class="photo-description">
+            첫 번째 이미지 설명
+          </span>
+        </div>
+        <div id="image2" class="photo-frame">
+          <span id="desc2" class="photo-description">
+            두 번째 이미지 설명
+          </span>
+        </div>
+        <div id="image3" class="photo-frame">
+          <span id="desc3" class="photo-description">
+            세 번째 이미지 설명
+          </span>
+        </div>
+        <div id="image4" class="photo-frame">
+          <span id="desc4" class="photo-description">
+            네 번째 이미지 설명
+          </span>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="f-title">Happy Lunch Time</p>
+        <p class="f-date">2023.01.23</p>
+      </div>
+    </div>
+  </body>
+</html>
