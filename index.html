@@ -48,6 +48,9 @@
         position: relative;
         /*photo-frame 밑에 있는 photo-desc이
         photo-frame 기준으로 어디에 위치하게 할 것인지*/
+
+        cursor: pointer;
+        /*이 영역에서 손가락 모양 커서 이용*/
       }
 
       /* 하단 영역 스타일링 */
@@ -101,31 +104,111 @@
         transform: translate(-50%);
         left: 50%;
         /*왼쪽에서 50%만큼 정확히 가운데 정렬*/
+
+        opacity: 0;
+      }
+
+      .video {
+        width: 100%;
+        height: 100%;
+      }
+
+      .showText {
+        opacity: 0;
+        /*opacity : 불투명함
+        불투명 0% -> 투명하다*/
+      }
+      .hideText {
+        opacity: 1;
+        /*100% 불투명 -> 불투명하다*/
+        transition: opacity 0.5s linear;
+        /*나타날 때 0.5초동안 천천히 나타남*/
       }
     </style>
+
+    <script>
+      //텍스트가 보여지는 기능
+      //1. 몇 번째 사진 - number 에 마우스가 올라갔는지 확인 - if문
+      //2. 해당 사진을 찾아 hideText class를 지우고 showText class 삽입
+      //class를 동적으로 넣고 뺌
+      function showText(number) {
+        if (number === 1) {
+          document.querySelector("#desc1").classList.remove("hideText");
+          document.querySelector("#desc1").classList.add("showText");
+        } else if (number === 2) {
+          document.querySelector("#desc2").classList.remove("hideText");
+          document.querySelector("#desc2").classList.add("showText");
+        } else {
+          document.querySelector("#desc3").classList.remove("hideText");
+          document.querySelector("#desc3").classList.add("showText");
+        }
+      }
+
+      //텍스트가 감춰지는 기능
+      //1. 몇 번째 사진에서 마우스가 벗어났는지 확인 - if문
+      //2. 해당 사진을 찾아 showText class 지우고 hideText class 삽입
+      function hideText(number) {
+        if (number === 1) {
+          document.querySelector("#desc1").classList.remove("showText");
+          document.querySelector("#desc1").classList.add("hideText");
+        } else if (number === 2) {
+          document.querySelector("#desc2").classList.remove("showText");
+          document.querySelector("#desc2").classList.add("hideText");
+        } else {
+          document.querySelector("#desc3").classList.remove("showText");
+          document.querySelector("#desc3").classList.add("hideText");
+        }
+      }
+
+      //클릭 기능
+      //선택된 사진의 숫자를 가진 텍스트를 alert 형태로 출력해줌
+      function alertText(number) {
+        alert(`${number}번째 추억이에요 :)`);
+      }
+    </script>
   </head>
   <body>
     <div class="container">
       <div class="photos">
-        <div id="image1" class="photo-frame">
+        <div
+          id="image1"
+          class="photo-frame"
+          onmouseover="hideText(1)"
+          onmouseout="showText(1)"
+          onclick="alertText(1)"
+        >
           <span id="desc1" class="photo-description">
             첫 번째 이미지 설명
           </span>
         </div>
-        <div id="image2" class="photo-frame">
+        <div
+          id="image2"
+          class="photo-frame"
+          onmouseover="hideText(2)"
+          onmouseout="showText(2)"
+          onclick="alertText(2)"
+        >
           <span id="desc2" class="photo-description">
             두 번째 이미지 설명
           </span>
         </div>
-        <div id="image3" class="photo-frame">
+        <div
+          id="image3"
+          class="photo-frame"
+          onmouseover="hideText(3)"
+          onmouseout="showText(3)"
+          onclick="alertText(3)"
+        >
           <span id="desc3" class="photo-description">
             세 번째 이미지 설명
           </span>
         </div>
         <div id="image4" class="photo-frame">
-          <span id="desc4" class="photo-description">
-            네 번째 이미지 설명
-          </span>
+          <iframe
+            src="https://www.youtube.com/embed/TWz1btekxfs"
+            frameborder="0"
+            class="video"
+          ></iframe>
         </div>
       </div>
       <div class="footer">
